@@ -73,9 +73,7 @@
                 </div>
                 <div id="main">
                     <div id="sidebar">
-                        <?php
-                        ControllerPartial::Get('Products/Categories');
-                        ?>
+                    
                     </div>
                     <div id="content">
                         <?php
