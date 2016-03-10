@@ -34,14 +34,7 @@ header('Content-Type: text/html; charset='.$Charset);
 //$dbConect = new SQL_Conect($DbConf['schop']);
 //$dbConect = 
 $dbConect = new SQL_Conect_PDO();
-
-
-//$DbConf[]='';
-$DbConf['host']= 'localhost';
-$DbConf['db_name']= 'SCM';
-$DbConf['db_user']= 'root';
-$DbConf['db_password']= '';
-$dbConect->Conect_Start($DbConf);
+$dbConect->Conect_Start($DbConf['SCM']);
 
 new SetControllers();
 
