@@ -1,0 +1,12 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+RewriteRule !404.html|\.(js|ico|gif|jpg|png|css|php)$ index.php
+
+#php_flag log_errors on
+#php_value mysql.connect_timeout 10
+#php_value error_reporting 6143
+#php_value display_errors 0
+#php_value register_globals Off
+#php_value eaccelerator.enable 1
+#php_value eaccelerator.optimizer 1
