@@ -17,5 +17,4 @@ foreach ($Args['data'] as $item) {
     }
     ?>
 </select>
-</form>
 
