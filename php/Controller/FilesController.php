@@ -14,11 +14,10 @@ class FilesController extends ControllerBase {
     
     function Index_Action() {
             
-        $arr['qwe'] = 'qwe';
-        $arr['433'] = 'qwe';
-        $arr['232'] = 'qwe';
+        $fileList = new files ;
+        $res=$fileList->getUserFiles();
         
-        $this->View($arr);
+        $this->View($res);
         
     }
 
