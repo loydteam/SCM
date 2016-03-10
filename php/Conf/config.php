@@ -29,11 +29,11 @@ $DefaltControler = 'FilesController';
 $Charset = 'utf-8';
 
 #region SQL_DATA
-$DbConf['schop']['host'] = 'localhost';
-$DbConf['schop']['db_user'] = 'root';
-$DbConf['schop']['db_password'] = '';
-$DbConf['schop']['db_name'] = 'repositori';
-$DbConf['schop']['db_encode'] = 'utf8';
+$DbConf['SCM']['host'] = 'localhost';
+$DbConf['SCM']['db_user'] = 'root';
+$DbConf['SCM']['db_password'] = '';
+$DbConf['SCM']['db_name'] = 'scm';
+$DbConf['SCM']['db_encode'] = 'utf8';
 #endregion
 
 require_once Conf_DIR . 'start.php';

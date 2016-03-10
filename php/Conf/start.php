@@ -34,7 +34,7 @@ header('Content-Type: text/html; charset='.$Charset);
 //$dbConect = new SQL_Conect($DbConf['schop']);
 //$dbConect = 
 $dbConect = new SQL_Conect_PDO();
-$dbConect->Conect_Start($DbConf['schop']);
+$dbConect->Conect_Start($DbConf['SCM']);
 
 new SetControllers();
 
