@@ -32,8 +32,8 @@ class FilesController extends ControllerBase {
         
         //echo $this->Id_int;
         $res['id'] = $this->Id_int;
-        
-        
+        $filerev = new files;
+        $res['data'] = $filerev->getFileRevisions();
         $this->View($res);
     }
     

@@ -19,4 +19,14 @@ class files {
         
     }
     
+       public function getFileRevisions($file_id=1){
+        
+        $db = new SQL_Conect_PDO();
+        $sql = "SELECT * FROM `revision` WHERE `file_id` =". $file_id;
+        $db->SetQuery($sql);    
+        $res = $db->GetQueryAll_Class();
+        return $res;
+        
+    }
+    
 }
