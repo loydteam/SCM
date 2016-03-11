@@ -26,9 +26,7 @@
             <div id="outer">
                 <div id="header">
                     <div id="logo">
-                        <h1>
-                            <a href="#">scm</a>
-                        </h1>
+                            <a href="#"><img src="/images/logo.png" alt=""/></a>
                     </div>
                     <div id="search">
                         <?php

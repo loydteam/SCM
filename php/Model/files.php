@@ -5,7 +5,7 @@ class files {
     public $user_id = '';
 
     function __construct() {
-        
+
         $this->user_id = isset($_SESSION['Id']) ? $_SESSION['Id'] : NULL;
     }
 
@@ -59,5 +59,31 @@ class files {
         
         return (object)$result;
     }
+    
+    
+     public function createNewFile($fileName,$description) {
+         $ArrPars['fileName'] = $fileName;
+         $ArrPars['description'] = $description;
+         $ArrPars['Id'] = $this->user_id;
+        $db = new SQL_Conect_PDO();
+        $sql = "INSERT INTO `scm`.`user_files` "
+                . "(`user_id`, `file_name`, `description`) "
+                . "VALUES ( :Id, :fileName, :description)";
+        $db->SetQuery($sql, $ArrPars);
+        $inserted_id=$db->getLastInsertId();
+        
+        unset ($ArrPars);
+        $ArrPars['file_id']=$inserted_id;
+        $sql = "INSERT INTO `scm`.`revision` "
+                . "(`file_id`, `version`, `comments`) "
+                . "VALUES ( :file_id, '1', 'creating file')";
+        $db->SetQuery($sql, $ArrPars);
+        $revision_id=$db->getLastInsertId();
+        mkdir(PUB_DIR_FILES.$inserted_id, 0700);
+        $myfile = fopen(PUB_DIR_FILES.$inserted_id.'/'.$revision_id.".txt", "w"); 
+        
+        
+     }
+    
 
 }

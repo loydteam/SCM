@@ -28,7 +28,7 @@ body {
 	font-size: 12pt;
 	line-height: 1.75em;
 	font-family: Georgia, serif;
-	background: #D2E0DD;
+	background:#e6e6e6;
 	color: #382b31;
 }
 
@@ -75,9 +75,6 @@ ul {
 	clear: both;
 }
 
-#bg {	
-	padding: 0 0 64px 0;
-}
 
 #banner {
 	position: relative;
@@ -115,7 +112,7 @@ ul {
 #copyright {
 	text-align: center;
 	color: #819B95;
-	padding: 32px 0 0 0;
+	padding: 25px 0;
 }
 
 #copyright a {
@@ -168,7 +165,7 @@ ul {
 	padding: 24px;
 	height: 150px;
 	width: 932px;
-	background: #34564f;
+	background: #a6a6a6;
 	color: #fff;
 }
 
@@ -180,9 +177,9 @@ ul {
 	line-height: 150px;
 }
 
-#logo a {
-	text-decoration: none;
-	color: #fff;
+#logo img {
+	margin:30px 0 0 0;
+	width: 30%;
 }
 
 #logo h1 {
@@ -195,6 +192,8 @@ ul {
 	padding: 24px;
 	width: 932px;
 	color: #5e5e5e;
+	min-height:350px;
+	background: rgba(0,0,0,.01);
 }
 
 #main a {
@@ -232,7 +231,7 @@ ul {
 	padding: 0 24px 0 24px;
 	width: 932px;
 	margin: 0 0 0 0;
-	background: #117848;
+	background: #4d4d4d;
 }
 
 #nav a {
@@ -281,8 +280,10 @@ ul {
 	margin-left: 1em;
 	border: 0;
 	color: #fff;
-	background: #117848;
-	padding: 4px;
+	background: #4d4d4d;
+	border-radius: 3px;
+	padding: 4px 10px;
+	cursor: pointer;
 	text-transform: lowercase;
 	font-family: Bitter, serif;
 }
