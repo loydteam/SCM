@@ -8,40 +8,44 @@
 
 class FilesController extends ControllerBase {
 
+    public $MaxRes = 2;
+
     //put your code here
     //echo SetControllers::$Id;
     function Index_Action() {
+
         
+        $res = null;
+
+        if ($this->Id_int < 0) {
+            header('Location: /');
+            exit();
+        }
+
+        if (isset($_SESSION['Id'])) {
+
+            $Files = new files();
+            $res['files'] = $Files->getUserFiles();
+                        
+            //var_dump($res);
+        }
         
+        //
+
+        $this->View($res);
+    }
+
+    function NewFile_Action() {
+
+  
         $this->View();
-    }
-
-    function FileList_Action() {
-
-        
-        $fileList = new files;
-        $res['data'] = $fileList->getUserFiles();
-        
-        $res['id'] = $this->Id_int;
-        
-        $this->TPL_Action = 'FileList';
-        $this->View($res);
-    }
-
-    function Revisions_Action() {
-        
-        //echo $this->Id_int;
-        $res['id'] = $this->Id_int;
-        $filerev = new files;
-        $res['data'] = $filerev->getFileRevisions();
-        $this->View($res);
     }
     
-    function Test_Action() {
-
-        echo 'Test_Action';
-
+    function EditFile_Action() {
+        
         $this->View();
     }
+    
+   
 
 }

@@ -5,7 +5,8 @@ class files {
     public $user_id = '';
 
     function __construct() {
-        $this->user_id = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+        
+        $this->user_id = isset($_SESSION['Id']) ? $_SESSION['Id'] : NULL;
     }
 
     public function getUserFiles() {
