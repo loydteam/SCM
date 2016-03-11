@@ -18,6 +18,26 @@ class RevisionController extends ControllerBase {
         $this->View();
     }
 
-  
+    function getFileRevisions_Action() {
+
+        if ($this->Id_int < 0) {
+            header('Location: /');
+            exit();
+        }
+
+        $Files = new files();
+        $res['FileRevisions'] = $Files->getFileRevisions($this->Id_int);
+        
+        $this->View($res);
+        //getFileRevisions
+    }
+
+    private function IsLogin() {
+
+        if (!isset($_SESSION['Id'])) {
+            header('Location: /');
+            exit();
+        }
+    }
 
 }
