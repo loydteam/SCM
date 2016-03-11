@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        <title>Shop Products</title>
+        <title>SCM</title>
         <!--<link href="http://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css" />-->
         <link rel="shortcut icon" href="http://site-images.similarcdn.com/image?url=cdcenter.org&t=2&s=10&h=3062575038359797161">
         <link rel="stylesheet" type="text/css" href="/css/style.css" />
