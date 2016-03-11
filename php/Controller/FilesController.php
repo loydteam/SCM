@@ -14,7 +14,7 @@ class FilesController extends ControllerBase {
     //echo SetControllers::$Id;
     function Index_Action() {
 
-        
+
         $res = null;
 
         if ($this->Id_int < 0) {
@@ -26,53 +26,57 @@ class FilesController extends ControllerBase {
 
             $Files = new files();
             $res['files'] = $Files->getUserFiles();
-                                    
         }
-        
+
         //
 
         $this->View($res);
     }
 
     function NewFile_Action() {
-
-        $this->View();
-    }
-    
-    function NewFileSet_Action() {
         
-        if (!isset($_SESSION['Id'])) {
-            header('Location: /');
-            exit();
-        }
+        $this->IsLogin();
+        
+        $this->View();
+        
+        
+    }
+
+    function NewFileSet_Action() {
+
+        $this->IsLogin();
 
         $arr[] = 'file_name';
         $arr[] = 'description';
 
         $F = new F_Help();
-        
+
         if (!$F->IsOllPostSet($arr)) {
             return;
         }
-        
-        $F->IsStrMin($_POST['file_name'], 3, 'file_name');
-        $F->IsStrMin($_POST['description'], 3, 'description');
-        
+
+        $F->IsStrMin($_POST['file_name'], 4, 'file_name');
+        $F->IsStrMin($_POST['description'], 5, 'description');
+
         if (F_Help::$E == null) {
-            
+
             $Files = new files();
-            $res['files'] = $Files->createNewFile('fileName','asdasd asdasd asdasd');
+            $res['files'] = $Files->createNewFile($_POST['file_name'], $_POST['description']);
         }
-        
+
         $res['e'] = F_Help::$E['name'] = "fdfsd";
         $res = json_encode($res);
-
 
         echo $res;
         //createNewFile
     }
 
-    
-   
+    private function IsLogin() {
+
+        if (!isset($_SESSION['Id'])) {
+            header('Location: /');
+            exit();
+        }
+    }
 
 }

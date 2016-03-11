@@ -4,7 +4,7 @@
 
 if (isset($Args['files']) && $Args['files']) {
    
-    var_dump($Args['files']);
+    //var_dump($Args['files']);
 ?>
   
 
