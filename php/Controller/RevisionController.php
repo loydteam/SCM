@@ -20,6 +20,8 @@ class RevisionController extends ControllerBase {
 
     function getFileRevisions_Action() {
 
+        //$this->IsLogin();
+        
         if ($this->Id_int < 0) {
             header('Location: /');
             exit();
@@ -28,11 +30,20 @@ class RevisionController extends ControllerBase {
         $Files = new files();
         $res['FileRevisions'] = $Files->getFileRevisions($this->Id_int);
         
+        //var_dump($res);
+        //echo 'test';
+        
         $this->View($res);
-        echo 'test';
+        
         //getFileRevisions
     }
 
+    function GetDiscName_Action() {
+        
+        //var_dump('echo');
+         $this->View();
+    }
+    
     private function IsLogin() {
 
         if (!isset($_SESSION['Id'])) {
