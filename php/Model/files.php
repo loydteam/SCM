@@ -11,9 +11,11 @@ class files {
     
     public function getUserFiles(){
         
+        $ArrPars['Id'] = $this->user_id;
+                                              
         $db = new SQL_Conect_PDO();
-        $sql = "SELECT * FROM `user_files` WHERE `user_id` =3";//. $this->user_id;
-        $db->SetQuery($sql);    
+        $sql = "SELECT * FROM `user_files` WHERE `user_id` = :Id";
+        $db->SetQuery($sql, $ArrPars);  
         $res = $db->GetQueryAll_Class();
         return $res;
         
