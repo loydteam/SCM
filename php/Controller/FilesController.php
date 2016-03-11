@@ -26,8 +26,7 @@ class FilesController extends ControllerBase {
 
             $Files = new files();
             $res['files'] = $Files->getUserFiles();
-                        
-            //var_dump($res);
+                                    
         }
         
         //
@@ -37,14 +36,42 @@ class FilesController extends ControllerBase {
 
     function NewFile_Action() {
 
-  
         $this->View();
     }
     
-    function EditFile_Action() {
+    function NewFileSet_Action() {
         
-        $this->View();
+        if (!isset($_SESSION['Id'])) {
+            header('Location: /');
+            exit();
+        }
+
+        $arr[] = 'file_name';
+        $arr[] = 'description';
+
+        $F = new F_Help();
+        
+        if (!$F->IsOllPostSet($arr)) {
+            return;
+        }
+        
+        $F->IsStrMin($_POST['file_name'], 3, 'file_name');
+        $F->IsStrMin($_POST['description'], 3, 'description');
+        
+        if (F_Help::$E == null) {
+            
+            $Files = new files();
+            $res['files'] = $Files->createNewFile('fileName','asdasd asdasd asdasd');
+        }
+        
+        $res['e'] = F_Help::$E['name'] = "fdfsd";
+        $res = json_encode($res);
+
+
+        echo $res;
+        //createNewFile
     }
+
     
    
 
