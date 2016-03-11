@@ -57,6 +57,10 @@ class SQL_Conect_PDO {
         
        return self::$dbPDO->lastInsertId();
     }
+    
+    function getAffectedRowCount(){
+        return self::$dbPDO->rowCount();
+    }
 
     //PDOStatement
     function GetQueryOne_Class($Class = NULL) {
