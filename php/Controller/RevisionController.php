@@ -29,6 +29,7 @@ class RevisionController extends ControllerBase {
         $res['FileRevisions'] = $Files->getFileRevisions($this->Id_int);
         
         $this->View($res);
+        echo 'test';
         //getFileRevisions
     }
 
