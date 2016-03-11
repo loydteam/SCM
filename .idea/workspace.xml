@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2e37fc-6cb0-4b6e-be79-7fa796fa6489" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/View/Base/index.php" afterPath="$PROJECT_DIR$/php/View/Base/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/View/Files/Index.php" afterPath="$PROJECT_DIR$/php/View/Files/Index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/common.js" afterPath="$PROJECT_DIR$/www/js/common.js" />
-    </list>
+    <list default="true" id="3f2e37fc-6cb0-4b6e-be79-7fa796fa6489" name="Default" comment="" />
     <ignored path="SCM.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
