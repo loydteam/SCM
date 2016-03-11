@@ -91,5 +91,17 @@ class files {
             F_Help::$E['error'] = 'Error creating file in DB';
         }
     }
+    
+    public function createRevision($file_id) {
+        $ArrPars['file_id'] = $file_id;
+        $db = new SQL_Conect_PDO();
+        $sql = "SELECT MAX(version) FROM `revision` WHERE file_id=:file_id;";
+        $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryOneAssoc();
+        $version=$res[0]+1;
+        
+       
+       
+    }
 
 }
