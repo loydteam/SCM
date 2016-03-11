@@ -3,10 +3,10 @@
 
 
 if (isset($Args['files']) && $Args['files']) {
-    
+   
+    var_dump($Args['files']);
 ?>
   
-dsfsdf dfsdf 
 
 
 <?php
