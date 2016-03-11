@@ -168,12 +168,4 @@ class User {
         return $res;
     }
 
-    public function setUserMoney($Id, $Money) {
-
-        $db = new SQL_Conect_PDO();
-        $sql = "UPDATE `users` SET `Money` = `Money`+ :Money WHERE `Id` = :Id LIMIT 1;";
-
-        $db->SetQuery($sql, array('Id' => $Id, 'Money' => $Money));
-    }
-
 }

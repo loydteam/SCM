@@ -86,6 +86,21 @@ $(document).ready(function () {
 //
 //search
 //E
+//
+/*
+$(".file-list").change(function () {
+    
+        alert('ok');
+    
+});*/
+    
+    
+    $('.file-list').change(function () {
+   
+   
+   location.assign("/files/revisions/" + $('.file-list').val() );
+   
+});
 
     $('.orders-searchr').find('[name=button]').click(function () {
 

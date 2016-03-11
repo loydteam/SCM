@@ -19,42 +19,6 @@ class UserController extends ControllerBase {
         //echo 'Index_Action';           
     }
 
-    function MyAddBalance_Action() {
-
-        if (!isset($_SESSION['Id'])) {
-
-            header('Location: /');
-            exit();
-        }
-
-        if (isset($_POST['g-recaptcha-response'])) {
-
-
-            $arr[] = 'g-recaptcha-response';
-
-            $F = new F_Help();
-
-            if (!$F->IsOllPostSet($arr)) {
-                return;
-            }
-
-            $F->IsValidCaptcha($_POST['g-recaptcha-response']);
-
-            if (F_Help::$E == null) {
-                $user = new User();
-                $user->setUserMoney($_SESSION['Id'], 100);
-            }
-
-            $res['e'] = F_Help::$E;
-            $res = json_encode($res);
-
-            echo $res;
-            return;
-        }
-
-        $this->View();
-    }
-
     function MyProfile_Action() {
 
         if (!isset($_SESSION['Id'])) {

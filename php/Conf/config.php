@@ -22,9 +22,9 @@ if (!IsDebag) {
 
 
 $Controlers['user'] = "UserController";
-$Controlers['files'] = "FilesController";
+$Controlers['files'] = "RepositoriController";
 
-$DefaltControler = 'FilesController';
+$DefaltControler = 'RepositoriController';
 
 $Charset = 'utf-8';
 

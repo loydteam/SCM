@@ -27,7 +27,7 @@
                 <div id="header">
                     <div id="logo">
                         <h1>
-                            <a href="#">Shop Products</a>
+                            <a href="#">scm</a>
                         </h1>
                     </div>
                     <div id="search">
@@ -40,9 +40,6 @@
                             <?php
                             if (isset($_SESSION['Id'])) {
                                 ?>
-                                <li> 
-                                    <a href="/Orders/MyOrders">My Orders</a>
-                                </li>
                                 <li> 
                                     <a href="/User/MyProfile/">My Profile</a>
                                 </li> 
@@ -68,14 +65,10 @@
                         <br class="clear" />
                     </div>
                 </div>
-                <div id="banner">
-                    <img src="/images/pic1.jpg" width="932" height="172" alt="" />
-                </div>
+
                 <div id="main">
                     <div id="sidebar">
-                        <?php
-                        ControllerPartial::Get('Products/Categories');
-                        ?>
+                    
                     </div>
                     <div id="content">
                         <?php

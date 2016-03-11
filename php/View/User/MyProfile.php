@@ -13,9 +13,6 @@ $U = User::$User;
       <td>
           
 
-
-
-
 <section class="my-profile-edit">
     
         <label for="Email">Email:<br/>
