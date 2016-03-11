@@ -5,6 +5,7 @@ class files {
     public $user_id = '';
 
     function __construct() {
+
         $this->user_id = isset($_SESSION['Id']) ? $_SESSION['Id'] : NULL;
     }
 
