@@ -49,7 +49,13 @@ class SQL_Conect_PDO {
         
         $this->Query = self::$dbPDO->prepare($sql);
         $this->Query->execute($ArrPars);
+        
         //var_dump($this->Query);
+    }
+    
+    function getLastInsertId() {
+        
+       return self::$dbPDO->lastInsertId();
     }
 
     //PDOStatement
