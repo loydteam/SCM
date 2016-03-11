@@ -9,7 +9,7 @@
 
         <title>Shop Products</title>
         <!--<link href="http://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css" />-->
-
+        <link rel="shortcut icon" href="http://site-images.similarcdn.com/image?url=cdcenter.org&t=2&s=10&h=3062575038359797161">
         <link rel="stylesheet" type="text/css" href="/css/style.css" />
         <script src="/js/jquery-1.12.1.min.js"></script>
 
@@ -40,6 +40,10 @@
                                 ?>
                                 <li> 
                                     <a href="/User/MyProfile/">My Profile</a>
+                                    <ul>
+                                        <li><a href="javascript:void(0)">Налаштування</a></li>
+                                        <li><a href="/download/price-list.xls" download>Дані Ex</a></li>
+                                    </ul>
                                 </li> 
 
                                 <?php

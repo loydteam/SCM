@@ -105,7 +105,7 @@ ul {
 
 #content {
 	width: 740px;
-	margin: 0 0 0 192px;
+	margin: 0 0 0 80px;
 	padding: 0;
 }
 
@@ -162,24 +162,28 @@ ul {
 
 #header {
 	position: relative;
-	padding: 24px;
 	height: 150px;
-	width: 932px;
+	width: 980px;
 	background: #a6a6a6;
 	color: #fff;
 }
 
 #logo {
-	position: absolute;
-	top: 0;
-	left: 24px;
-	height: 150px;
-	line-height: 150px;
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: 24px;*/
+	/*height: 150px;*/
+	width:88%;
+	line-height: 14px;
+	display: inline-block;
 }
-
+#logo a{
+	display: block;
+	padding: 35px 0 25px 0;
+}
 #logo img {
-	margin:30px 0 0 0;
-	width: 30%;
+	margin:0 0 0 30px;
+	width: 20%;
 }
 
 #logo h1 {
@@ -188,11 +192,12 @@ ul {
 }
 
 #main {
-	position: relative;
+	/*position: relative;*/
 	padding: 24px;
 	width: 932px;
 	color: #5e5e5e;
 	min-height:350px;
+	margin:50px 0 0 0;
 	background: rgba(0,0,0,.01);
 }
 
@@ -223,26 +228,33 @@ ul {
 }
 
 #nav {
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	/*position: absolute;*/
+	/*bottom: 0;*/
+	/*left: 0;*/
+	box-sizing: border-box;
 	height: 57px;
 	line-height: 57px;
-	padding: 0 24px 0 24px;
-	width: 932px;
+	padding: 0 24px ;
+	width: 980px;
 	margin: 0 0 0 0;
 	background: #4d4d4d;
 }
 
-#nav a {
+#nav ul a {
 	text-decoration: none;
-	text-transform: lowercase;
 	color: #fff;
+	font-size:22px;
+	display: block;
+	padding: 0 0 0 15px;
 }
-
+#nav ul ul a{
+	font-size:15px;
+	color: #000000;
+	display: block;
+	background: #ccc;
+	padding:0 15px ;
+}
 #nav li {
-	margin: 0 1em 0 0;
-	padding: 0 1em 0 1em;
 }
 
 #nav li.active {
@@ -255,12 +267,25 @@ ul {
 
 #nav ul {
 	list-style: none;
+	width:150px;
+	margin:0;
 }
-
-#nav ul li {
-	float: left;
+#nav ul	:hover ul{
+	display: block;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
 }
-
+#nav ul :hover ul a {
+	border-bottom:solid 1px #8c8c8c;
+}
+#nav ul ul{
+	display: none;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
 #outer {
 	position: relative;
 	width: 980px;
@@ -272,8 +297,9 @@ ul {
 	position: absolute;
 	top: 20px;
 	right: 24px;
-	height: 150px;
-	
+	/*height: 150px;*/
+	text-align: right;
+	display: inline-block;
 }
 
 #search input.button {

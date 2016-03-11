@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-//
-//    $(".menu_user").click(function () {
-//        $(".sub_menu_user").slideToggle();
-//    });
+
+    //$(".button_my_profile").click(function () {
+    //    $(".my-profile-edit").slideToggle();
+    //});
 
 
 

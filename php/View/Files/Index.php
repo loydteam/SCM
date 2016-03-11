@@ -25,10 +25,10 @@ if (isset($Args['files']) && $Args['files']) {
     <?php
 } else {
     ?>   
-    <center><h1>
+    <center><h3>
             Please login in scm
-        </h1>
-    </center> 
+        </h3>
+    </center>
 
     <?php
 }
