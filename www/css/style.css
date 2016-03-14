@@ -110,8 +110,14 @@ ul {
 	margin: 0 0 0 80px;
 	padding: 0;
     text-overflow: clip;
-
+    position: relative;
+    
     overflow: auto;
+}
+.new_files{
+    position: absolute;
+    top: 1px;
+    right: 10px;
 }
 .text_edit{
     white-space: pre-line;
@@ -357,6 +363,14 @@ input{
     padding: 5px 0 5px 5px;
     margin: 10px 0;
 }
-.edit_files{
+.files_info{
+    position: relative;
+    border-bottom: solid 1px #e6e6e6;
+    padding: 25px 0;
+}
 
+.edit_files{
+    position: absolute;
+    right: 80px;
+    top: 1px   ;
 }

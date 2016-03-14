@@ -5,7 +5,7 @@ $U = User::$User;
 //var_dump(User::$User);
 ?>
 
-<center> 
+<!--<center> -->
 <h1>My Profile Edit</h1><br/>
 
 <table style="width:10%">
@@ -54,4 +54,4 @@ $U = User::$User;
   </tr>
 </table>          
           
-</center>
+<!--</center>-->
