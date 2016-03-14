@@ -18,7 +18,7 @@
                     </label><br/>
 
                     <label for="file_name">File Name:<br/>
-                        <input type="text" name="file_name" placeholder="file_name" value="" required>
+                        <input type="text" name="file_name" placeholder="enter file name" value="" required>
                         <label class="E"></label>
                     </label><br/>
 

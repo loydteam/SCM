@@ -340,3 +340,11 @@ ul {
 .img-shop {
     padding: 20px; 
 }
+.new-file-button{
+    padding: 5px 10px;
+    margin: 10px 0 0 0;
+}
+input{
+    padding: 5px 0 5px 5px;
+    margin: 10px 0;
+}
