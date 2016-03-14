@@ -1,0 +1,376 @@
+/*
+
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution License
+
+	Name       : Serious Face
+	Version    : 1.0
+	Released   : 20130222
+
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #000000;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	font-size: 12pt;
+	line-height: 1.75em;
+	font-family: Georgia, serif;
+	background:#e6e6e6;
+	color: #382b31;
+}
+
+br.clear {
+	clear: both;
+}
+
+h1,h2,h3,h4 {
+	/*text-transform: lowercase;*/
+    padding: 0 0 15px 0;
+}
+
+h2,h3,h4 {
+	margin-bottom: 1em;
+	font-family: Bitter, serif;
+	color: #000000;
+}
+
+strong {
+	color: #000000;
+}
+
+img.left {
+	float: left;
+	margin: 8px 20px 20px 0;
+}
+
+img.top {
+	margin: 8px 0 20px 0;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+ul {
+	margin-bottom: 1.5em;
+}
+
+.imageList {
+	list-style: none;
+}
+
+.imageList li {
+	clear: both;
+}
+
+
+#banner {
+	position: relative;
+	padding: 24px;
+	height: 172px;
+	width: 932px;
+	margin: 0 0 0 0;
+	background: #fff;
+}
+
+#box1 {
+	width: 740px;
+	overflow: hidden;
+	margin: 0 0 20px 0;
+}
+
+#box2 {
+	width: 360px;
+	overflow: hidden;
+	float: left;
+}
+
+#box3 {
+	width: 360px;
+	overflow: hidden;
+	margin: 0 0 0 380px;
+}
+
+#content {
+    float: right;
+	width: 650px;
+	margin: 0 0 0 80px;
+	padding: 0;
+    text-overflow: clip;
+    position: relative;
+    
+    overflow: auto;
+}
+.new_files{
+    position: absolute;
+    top: 1px;
+    right: 10px;
+}
+.text_edit{
+    white-space: pre-line;
+}
+#copyright {
+	text-align: center;
+	color: #819B95;
+	padding: 25px 0;
+}
+
+#copyright a {
+	color: #819B95;
+}
+
+#footer {
+	position: relative;
+	padding: 24px;
+	margin: 0 0 0 0;
+	width: 932px;
+	background: #2a5d60;
+	color: #b0c3c4;
+}
+
+#footer a {
+	color: #e8edee;
+}
+
+#footer h2, #footer h3, #footer h4 {
+	color: #fff;
+}
+
+#footer ul {
+	list-style: none;
+}
+
+#footer ul li {
+	padding: 8px 0 8px 0;
+	border-top: dotted 1px #557d80;
+}
+
+#footer ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#footerContent {
+	width: 740px;
+	margin: 0 0 0 192px;
+}
+
+#footerSidebar {
+	width: 172px;
+	float: left;
+}
+
+#header {
+	position: relative;
+	height: 150px;
+	width: 980px;
+	background: #a6a6a6;
+	color: #fff;
+}
+
+#logo {
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: 24px;*/
+	/*height: 150px;*/
+	width:88%;
+	line-height: 14px;
+	display: inline-block;
+}
+#logo a{
+	display: block;
+	padding: 35px 0 25px 0;
+}
+#logo img {
+	margin:0 0 0 30px;
+	width: 20%;
+}
+
+#logo h1 {
+	font-size: 2.75em;
+	font-family: Bitter, serif;
+}
+
+#main {
+	/*position: relative;*/
+	padding: 24px;
+	width: 932px;
+	color: #5e5e5e;
+	min-height:350px;
+	margin:50px 0 0 0;
+	background: rgba(0,0,0,.01);
+}
+
+#main a {
+	color: #1c1c1c;
+}
+
+#main h2, #main h3, #main h4 {
+	color: #212121;
+}
+
+#main ul {
+	list-style: none;
+}
+
+#main ul li {
+	padding: 8px 0 8px 0;
+	border-top: dotted 1px #ccc;
+}
+
+#main ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#main ul.imageList li {
+	padding: 16px 0 16px 0;
+}
+
+#nav {
+	/*position: absolute;*/
+	/*bottom: 0;*/
+	/*left: 0;*/
+	box-sizing: border-box;
+	height: 57px;
+	line-height: 57px;
+	padding: 0 24px ;
+	width: 980px;
+	margin: 0 0 0 0;
+	background: #4d4d4d;
+}
+
+#nav ul a {
+	text-decoration: none;
+	color: #fff;
+	font-size:22px;
+	display: block;
+	padding: 0 0 0 15px;
+}
+#nav ul ul a{
+	font-size:15px;
+	color: #000000;
+	display: block;
+	background: #ccc;
+	padding:0 15px ;
+}
+#nav li {
+}
+
+#nav li.active {
+	background: #fff;
+}
+
+#nav li.active a {
+	color: #34564F;
+}
+
+#nav ul {
+	list-style: none;
+	width:150px;
+	margin:0;
+}
+#nav ul	:hover ul{
+	display: block;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+#nav ul :hover ul a {
+	border-bottom:solid 1px #8c8c8c;
+}
+#nav ul ul{
+	display: none;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+#outer {
+	position: relative;
+	width: 980px;
+	margin: 0 auto 0 auto;
+	background: #fff;
+}
+
+#search {
+	position: absolute;
+	top: 20px;
+	right: 24px;
+	/*height: 150px;*/
+	text-align: right;
+	display: inline-block;
+}
+
+#search input.button {
+	margin-left: 1em;
+	border: 0;
+	color: #fff;
+	background: #4d4d4d;
+	border-radius: 3px;
+	padding: 4px 10px;
+	cursor: pointer;
+	text-transform: lowercase;
+	font-family: Bitter, serif;
+}
+
+#search input.text {
+	border: solid 1px #5d7872;
+	padding: 4px;
+}
+
+#sidebar {
+	width: 172px;
+	float: left;
+	padding: 0;
+}
+
+.E {
+    color: red;
+}
+
+.green {
+  color: green;  
+  font-size: 19px;
+    padding: 15px 0;
+}
+
+.red {
+  color: red;  
+}
+
+.img-shop {
+    padding: 20px; 
+}
+.new-file-button{
+    padding: 5px 10px;
+    margin: 10px 0 5px 0;
+}
+input{
+    padding: 5px 0 5px 5px;
+    margin: 10px 0;
+}
+.files_info{
+    position: relative;
+    border-bottom: solid 1px #e6e6e6;
+    padding: 25px 0;
+}
+
+.edit_files{
+    position: absolute;
+    right: 80px;
+    top: 1px   ;
+}
