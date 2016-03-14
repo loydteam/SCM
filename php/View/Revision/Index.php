@@ -5,7 +5,7 @@ if (isset($Args['file']) && $Args['file']) {
     $PagesA = $F->NewPager($Args['Page'], $Args['Pages'], $Args['url'], $this->GETurl);
     ?>
 
-    <center>
+<!--    <center>-->
         <h1>File Revisions:</h1><br/>
 
         File Name: <?php echo $Args['file']->file_name; ?><br/>
@@ -29,16 +29,16 @@ if (isset($Args['file']) && $Args['file']) {
 
             <a href="/Revision/GetFile/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>">Get File</a><br/>
             <a href="/Revision/FileEdit/<?php echo $val->id; ?>/?i=<?php echo $Args['file']->id; ?>">Edit File</a><br/>
-            <button class="revision-file-delete" value="<?php echo $val->id; ?>">FileDelete</button>
+<!--            <button class="revision-file-delete new-file-button" value="<?php echo $val->id; ?>">FileDelete</button>-->
             
-            <hr/><br/>
+            <br/>
             <?php
         }
         ?>
 
         <?php echo $PagesA; ?>
 
-    </center>  
+<!--    </center>  -->
 
     <?php
 }
