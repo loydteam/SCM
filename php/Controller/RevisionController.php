@@ -110,6 +110,30 @@ class RevisionController extends ControllerBase {
         echo $FileData;
     }
 
+    function GetFileInfo_Action() {
+        $this->IsUserLogin();
+        $this->IsPositiveId();
+
+        $Revision = new Revision();
+        $file = $Revision->getRevisionFile($this->UserId, $this->Id_int);
+        if (!$file) {
+            header('Location: /');
+            exit();
+        }
+
+        $FilesT = new FilesT();
+        $FileData = $FilesT->getFileData($this->UserId, $file->id);
+
+
+        ob_start();
+        highlight_string($FileData);
+        $FileData = ob_get_contents();
+        htmlspecialchars($string);
+        ob_end_clean();
+        //echo $FileData;
+        $this->View($FileData);
+    }
+
     function FileEdit_Action() {
         $this->IsUserLogin();
         $this->IsPositiveId();
@@ -154,7 +178,7 @@ class RevisionController extends ControllerBase {
             if (!$file) {
                 F_Help::$E['error'] = 'No such file or the file is not yours !!!';
             } else {
-                   
+
                 $revId = $Revision->RevisionUpdate($file->file_id, $_POST['comments']);
 
                 $FilesT = new FilesT();
