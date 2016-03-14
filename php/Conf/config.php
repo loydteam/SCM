@@ -32,7 +32,7 @@ $Charset = 'utf-8';
 $DbConf['schop']['host'] = 'localhost';
 $DbConf['schop']['db_user'] = 'root';
 $DbConf['schop']['db_password'] = '';
-$DbConf['schop']['db_name'] = 'repositori';
+$DbConf['schop']['db_name'] = 'scm';
 $DbConf['schop']['db_encode'] = 'utf8';
 #endregion
 
