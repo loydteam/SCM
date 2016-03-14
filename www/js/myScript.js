@@ -234,14 +234,14 @@ $(document).ready(function () {
 
     });
 
-//    $('.new-file-data').find('[name=File]').change(function () {
-//        //.button()
-//
-//        var SEL = $('.new-file-data');
-//        var name = SEL.find('[name=File]').val();
-//        SEL.find('[name=file_name]').val(name);
-//
-//    });
+    $('.new-file-data').find('[name=File]').change(function () {
+        //.button()
+
+        var SEL = $('.new-file-data');
+        var name = SEL.find('[name=File]').val();
+        SEL.find('[name=file_name]').val(name);
+
+    });
 
     $('.new-file-button').click(function () {
 
