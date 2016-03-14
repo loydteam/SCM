@@ -27,7 +27,7 @@
                         <label class="E"></label>
                     </label><br/>
                     
-                    <button type="button" class="revision-file-edit-button">Edit</button>
+                    <button type="button" class="revision-file-edit-button new-file-button">Edit</button>
 
                     <label for="id" style="visibility: hidden;">id:<br/>
                         <input type="text" name="id" placeholder="id" value="<?php echo $Args['id']; ?>" required>
