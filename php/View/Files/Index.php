@@ -22,7 +22,7 @@ if (isset($Args['files']) && $Args['files']) {
             <b class="green">Description:</b> <?php echo $val->description; ?><br/>
             <a href="/Revision/Index/<?php echo $val->id; ?>?i=<?php echo $val->id; ?>">Get All Revision File</a><br/>
             <a href="/Files/FileEdit/<?php echo $val->id; ?>">Edit File Properties</a><br/>
-<!--            <button class="files-files-delete" value="<?php echo $val->id; ?>">Delete</button>-->
+            <button class="files-files-delete" value="<?php echo $val->id; ?>">Delete</button>
             <br/>
             <?php
         }
