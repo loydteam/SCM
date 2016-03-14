@@ -149,7 +149,11 @@ class FilesController extends ControllerBase {
             F_Help::$E['e'] = 'No such file or the file is not yours !!!';
         } else {
 
+//$this->UserId
+//$_POST['id'] file id
 //delere nodell
+            
+            
         }
 
         $res['e'] = F_Help::$E;

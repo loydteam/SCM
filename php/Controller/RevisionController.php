@@ -210,7 +210,8 @@ class RevisionController extends ControllerBase {
         if (!$file) {
             F_Help::$E['e'] = 'No such file or the file is not yours !!!';
         } else {
-
+            //echo $file->id; // revision id
+            //$this->UserId
 //delere nodell
         }
 
