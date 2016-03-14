@@ -199,6 +199,8 @@ class FilesT {
                 $dir = PUB_DIR_FILES . $userId . '/' . $itm['id'] . '.txt';
                 unlink($dir);
             }
+        } else {
+             F_Help::$E['error'] = 'cannot find files with this id';
         }
     }
 
