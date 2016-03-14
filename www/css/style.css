@@ -109,6 +109,9 @@ ul {
 	width: 650px;
 	margin: 0 0 0 80px;
 	padding: 0;
+    text-overflow: clip;
+    white-space: pre-line;
+    overflow: auto;
 }
 
 #copyright {
