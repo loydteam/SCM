@@ -8,46 +8,64 @@
 
 class FilesController extends ControllerBase {
 
-    public $MaxRes = 2;
+    public $MaxRes = 1;
 
     //put your code here
     //echo SetControllers::$Id;
     function Index_Action() {
 
+        $res = '';
 
-        $res = null;
+        if ($this->UserId) {
 
-        if ($this->Id_int < 0) {
-            header('Location: /');
-            exit();
+            $this->IsPositiveId();
+            $Files = new FilesT();
+            $res = $Files->getUserFilesPage($this->UserId, $this->Id_int, $this->MaxRes);
+            $res['url'] = '/Files/Index/';
         }
 
-        if (isset($_SESSION['Id'])) {
+        $this->View($res);
+    }
 
-            $Files = new files();
-            $res['files'] = $Files->getUserFiles();
-        }
+    function UserFiles_Action() {
 
-        //
+        $this->IsUserLogin();
+        $this->IsPositiveId();
+
+        $Files = new FilesT();
+        $res['files'] = $Files->getUserFilesAll($this->UserId);
 
         $this->View($res);
     }
 
     function NewFile_Action() {
-        
-        $this->IsLogin();
-        
+
+        $this->IsUserLogin();
         $this->View();
-        
-        
     }
 
-    function NewFileSet_Action() {
+    function FileEdit_Action() {
+        $this->IsUserLogin();
+        $this->IsPositiveId();
 
-        $this->IsLogin();
+        $Files = new FilesT();
+        $res = $Files->getUserFile($this->UserId, $this->Id_int);
+
+        if (!$res) {
+            header('Location: /');
+            exit();
+        }
+
+        $this->View($res);
+    }
+
+    function FileEditSet_Action() {
+
+        $this->IsUserLogin();
 
         $arr[] = 'file_name';
         $arr[] = 'description';
+        $arr[] = 'id';
 
         $F = new F_Help();
 
@@ -55,28 +73,89 @@ class FilesController extends ControllerBase {
             return;
         }
 
-        $F->IsStrMin($_POST['file_name'], 4, 'file_name');
+        $F->IsStrMinNax($_POST['file_name'], 5, 32, 'file_name');
         $F->IsStrMin($_POST['description'], 5, 'description');
 
         if (F_Help::$E == null) {
-
-            $Files = new files();
-            $res['files'] = $Files->createNewFile($_POST['file_name'], $_POST['description']);
+            $Files = new FilesT();
+            $Is = $Files->getUserFile($this->UserId, $_POST['id']);
+            if (!$Is) {
+                F_Help::$E['error'] = 'No such file or the file is not yours !!!';
+            } else {
+                
+                $Files->FileEdit($this->UserId, $_POST['id'], $_POST['file_name'], $_POST['description']);                
+            }
         }
 
-        $res['e'] = F_Help::$E['name'] = "fdfsd";
+        $res['e'] = F_Help::$E;
+        $res = json_encode($res);
+
+        echo $res;
+    }
+
+    function NewFileSet_Action() {
+
+        $this->IsUserLogin();
+
+        $arr[] = 'file_name';
+        $arr[] = 'description';
+        $arr[] = 'comments';
+
+        $F = new F_Help();
+
+        if (!$F->IsOllPostSet($arr)) {
+            return;
+        }
+
+        $F->IsStrMinNax($_POST['file_name'], 5, 32, 'file_name');
+        $F->IsStrMin($_POST['description'], 5, 'description');
+        $F->IsStrMinNax($_POST['comments'], 3, 64, 'comments');
+
+        if (isset($_FILES['File'])) {
+
+            $F->IsValidFile($_FILES['File'], 'File', 0.5 * 1024 * 1024);
+        } else {
+            F_Help::$E['File'] = 'Set File !!!';
+        }
+
+        if (F_Help::$E == null) {
+
+            $Files = new FilesT();
+            $Files->createNewFile($this->UserId, $_POST['file_name'], $_POST['description'], $_POST['comments'], $_FILES['File']['tmp_name']);
+        }
+
+        $res['e'] = F_Help::$E;
         $res = json_encode($res);
 
         echo $res;
         //createNewFile
     }
 
-    private function IsLogin() {
+    function FileDelete_Action() {
 
-        if (!isset($_SESSION['Id'])) {
-            header('Location: /');
-            exit();
+        $this->IsUserLogin();
+
+        $arr[] = 'id';
+
+        $F = new F_Help();
+
+        if (!$F->IsOllPostSet($arr)) {
+            return;
         }
-    }
 
+        $Files = new FilesT();
+        $Is = $Files->getUserFile($this->UserId, $_POST['id']);
+        if (!$Is) {
+            F_Help::$E['e'] = 'No such file or the file is not yours !!!';
+        } else {
+
+//delere nodell
+        }
+
+        $res['e'] = F_Help::$E;
+        $res = json_encode($res);
+
+        echo $res;
+    }
+    
 }

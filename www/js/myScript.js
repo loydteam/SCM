@@ -43,9 +43,9 @@ var IsValidImg = function IsValidImg(maxFileSize, SEL) {
         SEL.find('[for=Image]').find('.E').html('<br/>Invalid file type. Available type is jpeg, gif, png');
         return;
     }
-    
+
     return file;
-    
+
 };
 
 var FormGetData = function FormGetData($arr, SEL) {
@@ -82,111 +82,248 @@ var EroreAlert = function EroreAlert(resp, SEL) {
 
 $(document).ready(function () {
 
-//products-searchr
-//
-//search
+
+//$('.dialog-message').find('.E').html('User successfully Edit !');
+//$('.dialog-message').find('[name="message"]').html('User successfully Edit !');
+//$("#dialog-message").dialog("open");
 //E
 //
-/*
-$(".file-list").change(function () {
-    
-        alert('ok');
-    
-});*/
-    
-    
-    $('.file-list').change(function () {
-   
-   
-   location.assign("/files/revisions/" + $('.file-list').val() );
-   
-});
 
-    $('.orders-searchr').find('[name=button]').click(function () {
+     $('.files-files-delete').click(function (){
+         
+        EroreCleaner();
+         
+        var id = $(this).val();
 
-        var SEL = $('.orders-searchr');
+        var obj = new FormData();
+        obj.append('id', id);
+         
+        $.ajax({
+            url: '/Files/FileDelete/',
+            type: 'POST',
+            data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (resp) {
 
-        var obj = new Object();
-        var s = SEL.find('[name=search]').val();
-        var so = SEL.find('[name=option]:checked').val();
+                var resp = eval('(' + resp + ')');
 
-        location.assign("/Orders/MyOrders/?s=" + s + "&so=" + so);
+                if (resp.e != undefined) {
+                                        
+                    $('.dialog-message').find('.E').html(resp.e.e);
+                    $("#dialog-message").dialog("open");
+                    
+                } else {
 
-    });
+                    $('.dialog-message').find('[name="message"]').html('File successful delete !');
+                    $("#dialog-message").dialog("open");
+                }
+            }
+        });
+         
+     });
 
-    $('.products-searchr').find('[name=button]').click(function () {
+     $('.revision-file-delete').click(function (){
+         
+        EroreCleaner();
+         
+        var id = $(this).val();
 
-        var SEL = $('.products-searchr');
+        var obj = new FormData();
+        obj.append('id', id);
+         
+        $.ajax({
+            url: '/revision/FileDelete/',
+            type: 'POST',
+            data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (resp) {
 
-        var obj = new Object();
-        var s = SEL.find('[name=search]').val();
-        var so = SEL.find('[name=option]:checked').val();
+                var resp = eval('(' + resp + ')');
 
-        location.assign("/Searchr/ProductsGet/?s=" + s + "&so=" + so);
+                if (resp.e != undefined) {
+                                        
+                    $('.dialog-message').find('.E').html(resp.e.e);
+                    $("#dialog-message").dialog("open");
+                    
+                } else {
 
-    });
+                    $('.dialog-message').find('[name="message"]').html('File successful delete !');
+                    $("#dialog-message").dialog("open");
+                }
+            }
+        });
+         
+     });
 
-
-    $("img").error(function () {
-        $(this).unbind("error").attr("src", "/images/no_image.gif");
-    });
-
-    $('.get-free-test-money-bytton').click(function () {
+    $('.revision-file-edit-button').click(function () {
 
         EroreCleaner();
 
-        var SEL = $('.get-free-test-money');
+        var SEL = $('.revision-file-edit-data');
 
-        var $arr = ['g-recaptcha-response'];
-        var obj = FormGetData($arr, SEL);
+        var $arr = ['file', 'id', 'comments'];
+        var obj = FormGetDataFile($arr, SEL);
 
         $.ajax({
-            url: '/User/MyAddBalance',
+            url: '/revision/FileEditSet/',
             type: 'POST',
             data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
             success: function (resp) {
 
                 var resp = eval('(' + resp + ')');
 
                 if (resp.e != undefined) {
-                    grecaptcha.reset(0);
                     EroreAlert(resp, SEL);
                 } else {
 
-                    $('.dialog-message').find('[name="message"]').html('Free money successfully added to your account !');
-                    $("#dialog-message").dialog("open");
+                    var file_id = SEL.find('[name=file_id]').val();
+
+                    location.assign("/revision/Index/" + file_id + "/?i=" + file_id);
                 }
             }
         });
 
     });
 
-    $('.BuyProduct-button').click(function () {
+    $('.new-version-file-button').click(function () {
 
-        var SEL = $('.dialog-message');
+        EroreCleaner();
 
-        var obj = new Object();
-        obj['Id'] = $(this).attr("ProductId");
+        var SEL = $('.new-version-file-data');
+
+        var $arr = ['comments', 'id'];
+        var obj = FormGetDataFile($arr, SEL);
+        obj.append('File', SEL.find('[name=File]').prop('files')[0]);
 
         $.ajax({
-            url: '/Orders/BayOrder/',
+            url: '/revision/NewFileSet/',
             type: 'POST',
             data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
             success: function (resp) {
 
                 var resp = eval('(' + resp + ')');
 
                 if (resp.e != undefined) {
                     EroreAlert(resp, SEL);
-                    $("#dialog-message").dialog("open");
                 } else {
-                    SEL.find('[name="message"]').html('You have successfully purchased the product !');
-                    $("#dialog-message").dialog("open");
+
+                    var id = SEL.find('[name=id]').val();
+
+                    location.assign("/revision/Index/" + id + "/?i=" + id);
                 }
             }
         });
 
+    });
 
+    $('.new-file-data').find('[name=File]').change(function () {
+        //.button()
+
+        var SEL = $('.new-file-data');
+        var name = SEL.find('[name=File]').val();
+        SEL.find('[name=file_name]').val(name);
+
+    });
+
+    $('.new-file-button').click(function () {
+
+        EroreCleaner();
+
+        var SEL = $('.new-file-data');
+
+        var $arr = ['file_name', 'description', 'comments'];
+        var obj = FormGetDataFile($arr, SEL);
+        obj.append('File', SEL.find('[name=File]').prop('files')[0]);
+
+        $.ajax({
+            url: '/Files/NewFileSet/',
+            type: 'POST',
+            data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (resp) {
+
+                var resp = eval('(' + resp + ')');
+
+                if (resp.e != undefined) {
+                    EroreAlert(resp, SEL);
+                } else {
+
+                    location.assign("/Files/Index/");
+                }
+            }
+        });
+
+    });
+
+    $('.edit-file-button').click(function () {
+
+        EroreCleaner();
+
+        var SEL = $('.edit-file-data');
+
+        var $arr = ['file_name', 'description', 'id'];
+        var obj = FormGetDataFile($arr, SEL);
+
+        $.ajax({
+            url: '/Files/FileEditSet/',
+            type: 'POST',
+            data: obj,
+            enctype: 'multipart/form-data',
+            async: false,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (resp) {
+
+                var resp = eval('(' + resp + ')');
+
+                if (resp.e != undefined) {
+                    EroreAlert(resp, SEL);
+                } else {
+
+                    location.assign("/Files/Index/");
+                }
+            }
+        });
+
+    });
+
+    $('.my-files-list').change(function () {
+
+        if ($('.my-files-list').val() <= 0) {
+            retutn;
+        }
+
+        var id_file = $('.my-files-list').val();
+
+        location.assign("/revision/Index/" + id_file + "/?i=" + id_file);
+
+    });
+
+    $("img").error(function () {
+        $(this).unbind("error").attr("src", "/images/no_image.gif");
     });
 
     $("#dialog-message").dialog({
@@ -209,7 +346,6 @@ $(".file-list").change(function () {
         }
     });
 
-    // 
     $('.my-profile-edit-bytton').click(function () {
 
         EroreCleaner();

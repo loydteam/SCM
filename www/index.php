@@ -1,10 +1,9 @@
 <?php
 #region Config
 define('PUB_DIR', getenv('DOCUMENT_ROOT').'/');
-define('PUB_DIR_FILES', PUB_DIR.'files/');
 define('SYS_DIR', dirname(PUB_DIR).'/php/');
 
-define('PUB_DIR_SHOP', PUB_DIR.'/images/shop/');
+define('PUB_DIR_FILES', SYS_DIR.'tmp/');
 
 define('Conf_DIR', SYS_DIR.'/Conf/');
 

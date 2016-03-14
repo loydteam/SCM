@@ -1,6 +1,5 @@
 <?php
 //$Args;
-
 //var_dump(User::$User);
 ?>
 
@@ -12,7 +11,11 @@
             <td>
 
 
-                <section class="edit-file-data">
+                <section class="new-file-data">
+
+                    <label for="error">
+                        <label class="E"></label>
+                    </label><br/>
 
                     <label for="file_name">File Name:<br/>
                         <input type="text" name="file_name" placeholder="file_name" value="" required>
@@ -20,11 +23,21 @@
                     </label><br/>
 
                     <label for="description">Description:<br/>
-                        <textarea rows="10" cols="45" name="Description"></textarea>
+                        <textarea rows="10" cols="45" name="description"></textarea>
                         <label class="E"></label>
                     </label><br/>      
- 
-                    <button type="button" class="edit-file-button">Edit</button>
+
+                    <label for="File">File:
+                        <input type="File" name="File" multiple />
+                        <label class="E"></label>
+                    </label><br/>
+
+                    <label for="comments">Comments Revision:
+                        <input type="text" name="comments" placeholder="comments" value="" required>
+                        <label class="E"></label>
+                    </label><br/>
+                    
+                    <button type="button" class="new-file-button">New</button>
 
                 </section>
 
