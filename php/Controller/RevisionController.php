@@ -128,9 +128,10 @@ class RevisionController extends ControllerBase {
         ob_start();
         highlight_string($FileData);
         $FileData = ob_get_contents();
-        htmlspecialchars($string);
         ob_end_clean();
+        
         //echo $FileData;
+        
         $this->View($FileData);
     }
 
