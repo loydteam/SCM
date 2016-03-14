@@ -2,15 +2,15 @@
 
 function __autoload($class_name) {
 
-    
+    if (strpos($class_name, 'PHP')===false) {
     $dirs_array[''] = '';
     if(array_key_exists($class_name, $dirs_array)){
             $plas_dir = $dirs_array[$class_name];
     }else{
             $plas_dir = '';
     }
-
-    if (count(explode("Controller", $class_name)) > 1) {
+    
+     if (count(explode("Controller", $class_name)) > 1) {
         
         require_once Controller_DIR.$plas_dir.$class_name.'.php';
         
@@ -19,6 +19,8 @@ function __autoload($class_name) {
         require_once Model_DIR.$plas_dir.$class_name.'.php';
     }
         
+} else {
+}
 }
 
 SetControllers::$ControlersAssociation = $Controlers;

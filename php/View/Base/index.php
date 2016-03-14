@@ -43,7 +43,7 @@
                                                 <ul>
                                                     <li><a href="/Files/NewFile/">New Files</a></li>
                                                     <li><a href="/User/MyProfile/">Config</a></li>
-                                                    <li><a href="/download/price-list.xls" download>Дані Ex</a></li>
+                                                    <li><a href="/User/php_ex" download>Get File List</a></li>
                                                 </ul>
                                             </li> 
 

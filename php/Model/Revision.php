@@ -131,4 +131,20 @@ class Revision {
         
     }
     
+    function getRevisionsOfFile($FileId){
+        
+        $db = new SQL_Conect_PDO();
+        
+        $sql = "SELECT * "
+                . "FROM `revision` "
+                . "WHERE `file_id` = :FileId";
+        
+        $ArrPars['FileId'] = $FileId;
+
+        $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryAll_Class();
+        return $res;
+                    
+    }
+    
 }
