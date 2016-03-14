@@ -82,19 +82,24 @@ class Revision {
         
     }
     
-    function RevisionUpdate($RevisionId, $comments) {
+    function RevisionUpdate($file_id, $comments) {
         
+               
+        $ArrPars['file_id'] = $file_id;
         $db = new SQL_Conect_PDO();
-
-        $ArrPars['RevisionId'] = $RevisionId;
-        $ArrPars['comments'] = strip_tags($comments);
-        
-        $sql = "UPDATE `revision` "
-                . "SET `comments` = :comments, "
-                . "`update_time` = NOW() "
-                . "WHERE `id` = :RevisionId "
-                . "LIMIT 1;";
+        $sql = "SELECT MAX(version) FROM `revision` WHERE file_id=:file_id;";
         $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryOneAssoc();
+        $ArrPars['version']=$res[0]+1;
+         $ArrPars['comment']=$comments;
+        
+        $sql = "INSERT INTO `revision` "
+                    . "(`file_id`, `version`, `comments`) "
+                    . "VALUES ( :file_id, :version, :comment)";
+        $db->SetQuery($sql, $ArrPars);
+        
+        $revision_id = $db->getLastInsertId();
+        return $revision_id;
 
     }
     

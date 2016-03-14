@@ -8,7 +8,7 @@
 
 class FilesController extends ControllerBase {
 
-    public $MaxRes = 1;
+    public $MaxRes = 5;
 
     //put your code here
     //echo SetControllers::$Id;

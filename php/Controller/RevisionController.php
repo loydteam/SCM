@@ -8,7 +8,7 @@
 
 class RevisionController extends ControllerBase {
 
-    public $MaxRes = 1;
+    public $MaxRes = 10;
 
     //put your code here
     //echo SetControllers::$Id;
@@ -154,11 +154,11 @@ class RevisionController extends ControllerBase {
             if (!$file) {
                 F_Help::$E['error'] = 'No such file or the file is not yours !!!';
             } else {
-
-                $Revision->RevisionUpdate($_POST['id'], $_POST['comments']);
+                   
+                $revId = $Revision->RevisionUpdate($file->file_id, $_POST['comments']);
 
                 $FilesT = new FilesT();
-                $FilesT->writeFile($this->UserId, $_POST['id'], $_POST['file']);
+                $FilesT->writeFile($this->UserId, $revId, $_POST['file']);
             }
         }
 
