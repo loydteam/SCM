@@ -59,7 +59,8 @@ class SQL_Conect_PDO {
     }
     
     function getAffectedRowCount(){
-        return self::$dbPDO->rowCount();
+
+        return $this->Query->rowCount();
     }
 
     //PDOStatement

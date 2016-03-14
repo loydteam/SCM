@@ -82,8 +82,8 @@ class FilesController extends ControllerBase {
             if (!$Is) {
                 F_Help::$E['error'] = 'No such file or the file is not yours !!!';
             } else {
-                
-                $Files->FileEdit($this->UserId, $_POST['id'], $_POST['file_name'], $_POST['description']);                
+
+                $Files->FileEdit($this->UserId, $_POST['id'], $_POST['file_name'], $_POST['description']);
             }
         }
 
@@ -149,11 +149,7 @@ class FilesController extends ControllerBase {
             F_Help::$E['e'] = 'No such file or the file is not yours !!!';
         } else {
 
-//$this->UserId
-//$_POST['id'] file id
-//delere nodell
-            
-            
+            $Files->deleteFileAndRevisions($this->UserId, $_POST['id']);
         }
 
         $res['e'] = F_Help::$E;
@@ -161,5 +157,5 @@ class FilesController extends ControllerBase {
 
         echo $res;
     }
-    
+
 }

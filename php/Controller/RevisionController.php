@@ -129,9 +129,9 @@ class RevisionController extends ControllerBase {
         highlight_string($FileData);
         $FileData = ob_get_contents();
         ob_end_clean();
-        
+
         //echo $FileData;
-        
+
         $this->View($FileData);
     }
 
@@ -210,9 +210,7 @@ class RevisionController extends ControllerBase {
         if (!$file) {
             F_Help::$E['e'] = 'No such file or the file is not yours !!!';
         } else {
-            //echo $file->id; // revision id
-            //$this->UserId
-//delere nodell
+            $Revision->deleteRevision($this->UserId, $file->id);
         }
 
         $res['e'] = F_Help::$E;

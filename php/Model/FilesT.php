@@ -196,8 +196,13 @@ class FilesT {
 
             foreach ($res as $itm) {
 
-                $dir = PUB_DIR_FILES . $userId . '/' . $itm['id'] . '.txt';
+                $dir = PUB_DIR_FILES . $user_id . '/' . $itm['id'] . '.txt';
                 unlink($dir);
+                
+               $sql = "DELETE FROM `user_files` WHERE `user_files`.`id` = :file_id";
+                $db->SetQuery($sql, $ArrPars); 
+                $db->getAffectedRowCount() > 0 ? NULL : F_Help::$E['error'] = 'cannot find file with this id';
+                
             }
         } else {
              F_Help::$E['error'] = 'cannot find files with this id';
