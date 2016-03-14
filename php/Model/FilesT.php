@@ -183,4 +183,15 @@ class FilesT {
         $db->SetQuery($sql, $ArrPars);
         
     }
+    
+    function deleteFileAndRevisions($user_id, $file_id){
+        $ArrPars['file_id'] = $file_id;
+        
+            $db = new SQL_Conect_PDO();
+            $sql = "SELECT `revision`.`id` FROM `revision` WHERE `file_id`= :file_id";
+            $db->SetQuery($sql, $ArrPars);
+            $res = $db->GetQueryAllAssoc();
+            
+            
+    }
 }
