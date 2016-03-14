@@ -3,7 +3,7 @@
 //var_dump(User::$User);
 ?>
 
-<center> 
+<!--<center> -->
     <h1>Edit File</h1><br/>
 
     <table style="width:30%">
@@ -45,5 +45,5 @@
         </tr>
     </table>          
 
-</center>
+<!--</center>-->
 

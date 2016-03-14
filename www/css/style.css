@@ -110,10 +110,12 @@ ul {
 	margin: 0 0 0 80px;
 	padding: 0;
     text-overflow: clip;
-    white-space: pre-line;
+
     overflow: auto;
 }
-
+.text_edit{
+    white-space: pre-line;
+}
 #copyright {
 	text-align: center;
 	color: #819B95;
