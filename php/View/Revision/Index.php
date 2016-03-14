@@ -28,9 +28,9 @@ if (isset($Args['file']) && $Args['file']) {
             <b class="green">Update Time:</b> <?php echo $val->update_time; ?><br/>            
 
             <div class="edit_files">
-                <a href="/Revision/GetFile/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>">Download File</a><br/>
-                <a href="/Revision/GetFileInfo/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>">Get File</a><br/>
-                <a href="/Revision/FileEdit/<?php echo $val->id; ?>/?i=<?php echo $Args['file']->id; ?>">Edit File</a><br/>
+                <a href="/Revision/GetFile/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>" class="edit_files">Download File</a><br/>
+                <a href="/Revision/GetFileInfo/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>" class="edit_files">Get File</a><br/>
+                <a href="/Revision/FileEdit/<?php echo $val->id; ?>/?i=<?php echo $Args['file']->id; ?>"class="edit_files">Edit File</a><br/>
                 <button class="revision-file-delete new-file-button" value="<?php echo $val->id; ?>">Delete</button>
             </div>
             

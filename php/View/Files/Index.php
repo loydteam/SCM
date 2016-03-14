@@ -11,18 +11,22 @@ if (isset($Args['files']) && $Args['files']) {
         Page: <?php echo $Args['Page']; ?> Pages: <?php echo $Args['Pages']; ?><br/>
         
 
-        <br/><a href="/Files/NewFile/">New File</a><br/>
+        <br/><a href="/Files/NewFile/" class="new_files">New File</a><br/>
         <br/>
 
         <?php
         foreach ($Args['files'] as $val) {
             ?>  
-
-            <b class="green">Name:</b> <?php echo $val->file_name; ?><br/>
-            <b class="green">Description:</b> <?php echo $val->description; ?><br/>
-            <a href="/Revision/Index/<?php echo $val->id; ?>?i=<?php echo $val->id; ?>">Get All Revision File</a><br/>
-            <a href="/Files/FileEdit/<?php echo $val->id; ?>">Edit File Properties</a><br/>
-            <button class="files-files-delete" value="<?php echo $val->id; ?>">Delete</button>
+            <div class="files_info">
+                <b class="green">Name:</b> <?php echo $val->file_name; ?><br/>
+                <b class="green">Description:</b> <?php echo $val->description; ?><br/>
+                <div class="edit_files">
+                    <a href="/Revision/Index/<?php echo $val->id; ?>?i=<?php echo $val->id; ?>">Get All Revision File</a><br/>
+                    <a href="/Files/FileEdit/<?php echo $val->id; ?>">Edit File Properties</a><br/>
+                    <button class="files-files-delete" value="<?php echo $val->id; ?>">Delete</button>
+                </div>
+            </div>
+            
             <br/>
             <?php
         }
