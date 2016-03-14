@@ -192,6 +192,18 @@ class FilesT {
             $db->SetQuery($sql, $ArrPars);
             $res = $db->GetQueryAllAssoc();
             
+            $sql = "DELETE FROM `revision` WHERE `revision`.`file_id` = :file_id";
+           $db->SetQuery($sql, $ArrPars);
             
+            if ($db->getAffectedRowCount() > 0) {
+                
+               foreach ($res as $itm){
+                  
+                   $dir = PUB_DIR_FILES . $userId.'/'.$itm['id'].'.txt';
+             unlink($dir);
+                   
+                }
+                
+          }
     }
 }
