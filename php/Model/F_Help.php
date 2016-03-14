@@ -287,6 +287,7 @@ class F_Help {
         return $Data;
     }
 
+    //strip_tags(
     static public function SafeTegs($str) {
 
         $str = htmlentities($str, ENT_QUOTES, "UTF-8");
@@ -387,4 +388,24 @@ class F_Help {
         imagedestroy($src_img);
     }
 
+    static function IsValidFile($file, $name, $maxsize) {
+                
+        if (empty($file['size'])) {
+            F_Help::$E[$name] = 'File size can not be zero !';
+        } else if (!empty($file['error'])) {
+            F_Help::$E[$name] = 'Error loading file, try again !';
+        } else if ($file['size'] >= $maxsize) {
+            F_Help::$E[$name] = 'File size exceeds allowed size - ' . ($maxsize / (1024 * 1024)) . ' Mb !';
+        } else {
+            
+            $accept = array('text/html', 'text/plain', 'text/css', 'application/javascript', 'application/octet-stream');
+            $accept = array_flip($accept);
+    
+            if (!array_key_exists($file['type'], $accept)) {
+                F_Help::$E[$name] = 'Invalid file extension. Allowed only download text css javascript php html';
+            } 
+        }
+        
+    }
+    
 }

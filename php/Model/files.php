@@ -91,5 +91,28 @@ class files {
             F_Help::$E['error'] = 'Error creating file in DB';
         }
     }
+    
+    public function createRevisionInDB($file_id, $comment) {
+        
+          
+        $ArrPars['file_id'] = $file_id;
+        $db = new SQL_Conect_PDO();
+        $sql = "SELECT MAX(version) FROM `revision` WHERE file_id=:file_id;";
+        $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryOneAssoc();
+        $ArrPars['version']=$res[0]+1;
+         $ArrPars['comment']=$comment;
+        
+        $sql = "INSERT INTO `revision` "
+                    . "(`file_id`, `version`, `comments`) "
+                    . "VALUES ( :file_id, :version, :comment)";
+        $db->SetQuery($sql, $ArrPars);
+        
+        $revision_id = $db->getLastInsertId();
+        $myfile = fopen(PUB_DIR_FILES . $file_id . '/' . $revision_id . ".txt", "w");
+        
+    
+       
+    }
 
 }
