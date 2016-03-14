@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Revision
- *
- * @author root
- */
 class Revision {
     //put your code here
     
@@ -121,6 +110,25 @@ class Revision {
         $res = $db->GetQueryOne_Class();
         return $res;
                     
+    }
+    
+    function deleteRevision ($userId, $revisionId ){
+        
+        $db = new SQL_Conect_PDO();
+        
+        $sql = "DELETE FROM `revision` WHERE `revision`.`id` = :revisionId";
+        
+        $ArrPars['revisionId'] = $revisionId;
+
+        $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryOne_Class();
+         if ($db->getAffectedRowCount() > 0) {
+             $dir = PUB_DIR_FILES . $userId.'/'.$revisionId.'.txt';
+             unlink($dir);
+         } else {
+              F_Help::$E['error'] = 'Error deleting revision from DB';
+         }
+        
     }
     
 }
