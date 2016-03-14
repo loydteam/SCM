@@ -31,7 +31,7 @@ if (isset($Args['file']) && $Args['file']) {
                 <a href="/Revision/GetFile/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>">Download File</a><br/>
                 <a href="/Revision/GetFileInfo/<?php echo $val->id; ?>?i=<?php echo $Args['file']->id; ?>">Get File</a><br/>
                 <a href="/Revision/FileEdit/<?php echo $val->id; ?>/?i=<?php echo $Args['file']->id; ?>">Edit File</a><br/>
-<!--            <button class="revision-file-delete new-file-button" value="<?php echo $val->id; ?>">FileDelete</button>-->
+                <button class="revision-file-delete new-file-button" value="<?php echo $val->id; ?>">Delete</button>
             </div>
             
             <br/>
