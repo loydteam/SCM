@@ -22,7 +22,7 @@ if (isset($Args['file']) && $Args['file']) {
         foreach ($Args['revision'] as $val) {
             ?>  
 
-            <b class="green">Revision id:</b> <?php echo $val->file_id; ?><br/>
+            
             <b class="green">Version:</b> <?php echo $val->version; ?><br/>
             <b class="green">Comments:</b> <?php echo $val->comments; ?><br/>
             <b class="green">Update Time:</b> <?php echo $val->update_time; ?><br/>            
