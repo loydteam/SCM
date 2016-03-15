@@ -52,7 +52,8 @@ if (isset($Args['files']) && $Args['files']) {
     <?php
 } else {
     ?>   
-    <center><h3>
+    <center>
+        <h3 style="margin: 0 0 0 100px; text-align: left;">
             Please login in scm
         </h3>
     </center>
