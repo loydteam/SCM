@@ -113,15 +113,18 @@ class Revision {
     }
     
     function deleteRevision ($userId, $revisionId ){
-        
+
+        $FileId = $this->getRevisionFile($userId,$revisionId)->file_id;
+
+        $count = count((array)$this->getRevisionsOfFile($FileId));
+
+        if ($count>1) {
         $db = new SQL_Conect_PDO();
-        
         $sql = "DELETE FROM `revision` WHERE `revision`.`id` = :revisionId";
         
         $ArrPars['revisionId'] = $revisionId;
-
         $db->SetQuery($sql, $ArrPars);
-        $res = $db->GetQueryOne_Class();
+        $db->GetQueryOne_Class();
          if ($db->getAffectedRowCount() > 0) {
              $dir = PUB_DIR_FILES . $userId.'/'.$revisionId.'.txt';
              unlink($dir);
@@ -129,6 +132,10 @@ class Revision {
               F_Help::$E['error'] = 'Error deleting revision from DB';
          }
         
+    } else {
+            $file = new FilesT();
+            $file -> deleteFileAndRevisions($userId, $FileId);
+        }
     }
     
     function getRevisionsOfFile($FileId){
