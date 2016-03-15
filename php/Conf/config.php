@@ -4,7 +4,7 @@
 define('Model_DIR', SYS_DIR . '/Model/');
 define('Controller_DIR', SYS_DIR . '/Controller/');
 define('View_DIR', SYS_DIR . '/View/');
-
+define('PHPExcel_DIR', SYS_DIR . '/PHPExcel/');
 
 define('ROOT_HOST', getenv('HTTP_HOST'));
 define('ROOT_HOST_H', 'http://' . ROOT_HOST);

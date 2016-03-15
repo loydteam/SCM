@@ -36,6 +36,78 @@ class UserController extends ControllerBase {
 
         $this->View();
     }
+    
+    function php_ex_Action() {
+        $file_d = new FilesT();
+        $revision_d = new Revision();
+        $files = $file_d->getUserFilesAll($_SESSION['Id']);
+
+
+// Подключаем класс для работы с excel
+        require_once(SYS_DIR . 'PHPExcel.php');
+// Подключаем класс для вывода данных в формате excel
+        require_once(SYS_DIR . 'PHPExcel/Writer/Excel5.php');
+
+// Создаем объект класса PHPExcel
+        $xls = new PHPExcel();
+// Устанавливаем индекс активного листа
+        $xls->setActiveSheetIndex(0);
+// Получаем активный лист
+        $sheet = $xls->getActiveSheet();
+// Подписываем лист
+        $sheet->setTitle('File List');
+
+// Вставляем текст в ячейку A1
+        $sheet->setCellValue("A1", 'File list');
+        $sheet->getStyle('A1')->getFill()->setFillType(
+                PHPExcel_Style_Fill::FILL_SOLID);
+        $sheet->getStyle('A1')->getFill()->getStartColor()->setRGB('b5b5ff');
+// Объединяем ячейки
+        $sheet->mergeCells('A1:E1');
+
+//називаємо поля
+        $sheet->setCellValueByColumnAndRow(0, 3, "Filename");
+        $sheet->setCellValueByColumnAndRow(1, 3, "Description");
+        $sheet->setCellValueByColumnAndRow(2, 3, "Version");
+        $sheet->setCellValueByColumnAndRow(3, 3, "Comment");
+        $sheet->setCellValueByColumnAndRow(4, 3, "Update time");
+        $sheet->getColumnDimension('A')->setAutoSize(true);
+        $sheet->getColumnDimension('B')->setAutoSize(true);
+        $sheet->getColumnDimension('C')->setAutoSize(true);
+        $sheet->getColumnDimension('D')->setAutoSize(true);
+        $sheet->getColumnDimension('E')->setAutoSize(true);
+
+
+// Выравнивание текста
+        $sheet->getStyle('A1')->getAlignment()->setHorizontal(
+                PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $i = 4;
+        foreach ($files as $key => $value) {
+            $sheet->setCellValueByColumnAndRow(0, $i, $value->file_name . ".txt");
+            $sheet->setCellValueByColumnAndRow(1, $i, $value->description);
+            $revisions = $revision_d->getRevisionsOfFile($value->id);
+            
+            foreach ($revisions as $key2 => $value2) {
+                $i++;
+                $sheet->setCellValueByColumnAndRow(2, $i, $value2->version);
+                $sheet->setCellValueByColumnAndRow(3, $i, $value2->comments);
+                $sheet->setCellValueByColumnAndRow(4, $i, $value2->update_time);
+            }
+            $i++;
+        }
+
+// Выводим HTTP-заголовки
+        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=FileList.xls");
+
+// Выводим содержимое файла
+        $objWriter = new PHPExcel_Writer_Excel5($xls);
+        $objWriter->save('php://output');
+    }
 
     function MyProfileEdit_Action() {
 

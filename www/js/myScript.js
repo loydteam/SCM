@@ -233,7 +233,7 @@ $(document).ready(function () {
         });
 
     });
-
+/*
     $('.new-file-data').find('[name=File]').change(function () {
         //.button()
 
@@ -242,7 +242,7 @@ $(document).ready(function () {
         SEL.find('[name=file_name]').val(name);
 
     });
-
+*/
     $('.new-file-button').click(function () {
 
         EroreCleaner();

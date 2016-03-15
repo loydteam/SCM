@@ -91,7 +91,6 @@ class FilesT {
         $this->mkdirUser($UserId);
         $File = $this->getFileData(0, 0, $FileUrl);
         $this->writeFile($UserId, $revision_id, $File);
-        
     }
 
     function NevRevision($file_id, $comments, $version = 1) {
@@ -101,7 +100,7 @@ class FilesT {
         $ArrPars['file_id'] = $file_id;
         $ArrPars['comments'] = strip_tags($comments);
         $ArrPars['version'] = $version;
-        
+
         $sql = "INSERT INTO `revision` "
                 . "(`file_id`, `version`, `comments`) "
                 . "VALUES ( :file_id, :version, :comments)";
@@ -113,25 +112,24 @@ class FilesT {
         }
         return $revision_id;
     }
-    
+
     function getUserFile($UserId, $file_id) {
-        
+
         $db = new SQL_Conect_PDO();
-        
+
         $sql = "SELECT * FROM `user_files` "
                 . "WHERE `id` = :file_id "
                 . "AND `user_id` = :UserId "
                 . "LIMIT 1;";
-        
+
         $ArrPars['UserId'] = $UserId;
         $ArrPars['file_id'] = $file_id;
 
         $db->SetQuery($sql, $ArrPars);
         $res = $db->GetQueryOne_Class();
         return $res;
-        
     }
-    
+
     function mkdirUser($UserId) {
 
         $url = PUB_DIR_FILES . $UserId;
@@ -142,19 +140,19 @@ class FilesT {
     }
 
     function getFileData($UserId, $revision_id, $FileUrl = null) {
-        
+
         if (!$FileUrl) {
-            $FileUrl = PUB_DIR_FILES . $UserId.'/'.$revision_id.'.txt';
+            $FileUrl = PUB_DIR_FILES . $UserId . '/' . $revision_id . '.txt';
         }
-        
-        $data = file_get_contents($FileUrl); 
+
+        $data = file_get_contents($FileUrl);
         return $data;
     }
-    
+
     function writeFile($UserId, $revision_id, $txt) {
-        
-        $dir = PUB_DIR_FILES . $UserId.'/'.$revision_id.'.txt';
-                
+
+        $dir = PUB_DIR_FILES . $UserId . '/' . $revision_id . '.txt';
+
         @$bfh0 = fopen($dir, 'w+');
         @flock($bfh0, LOCK_EX);
         @ftruncate($bfh0, 0);
@@ -164,7 +162,7 @@ class FilesT {
     }
 
     function FileEdit($UserId, $file_id, $file_name, $description) {
-        
+
         $db = new SQL_Conect_PDO();
 
         $sql = "UPDATE `user_files` "
@@ -179,19 +177,36 @@ class FilesT {
         $ArrPars['file_id'] = $file_id;
         $ArrPars['file_name'] = strip_tags($file_name);
         $ArrPars['description'] = strip_tags($description);
-        
+
         $db->SetQuery($sql, $ArrPars);
-        
     }
-    
-    function deleteFileAndRevisions($user_id, $file_id){
+
+    function deleteFileAndRevisions($user_id, $file_id) {
         $ArrPars['file_id'] = $file_id;
-        
-            $db = new SQL_Conect_PDO();
-            $sql = "SELECT `revision`.`id` FROM `revision` WHERE `file_id`= :file_id";
-            $db->SetQuery($sql, $ArrPars);
-            $res = $db->GetQueryAllAssoc();
-            
-            
+
+        $db = new SQL_Conect_PDO();
+        $sql = "SELECT `revision`.`id` FROM `revision` WHERE `file_id`= :file_id";
+        $db->SetQuery($sql, $ArrPars);
+        $res = $db->GetQueryAllAssoc();
+
+        $sql = "DELETE FROM `revision` WHERE `revision`.`file_id` = :file_id";
+        $db->SetQuery($sql, $ArrPars);
+
+        if ($db->getAffectedRowCount() > 0) {
+
+            foreach ($res as $itm) {
+
+                $dir = PUB_DIR_FILES . $user_id . '/' . $itm['id'] . '.txt';
+                unlink($dir);
+                
+               $sql = "DELETE FROM `user_files` WHERE `user_files`.`id` = :file_id";
+                $db->SetQuery($sql, $ArrPars); 
+                $db->getAffectedRowCount() > 0 ? NULL : F_Help::$E['error'] = 'cannot find file with this id';
+                
+            }
+        } else {
+             F_Help::$E['error'] = 'cannot find files with this id';
+        }
     }
+
 }
