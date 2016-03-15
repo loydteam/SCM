@@ -103,6 +103,9 @@
 
                         </label>
                     </div>
+                    <script src="//tinymce.cachefly.net/4.3/tinymce.min.js"></script>
+                    <script src="/js/common.js"></script>
+
 
                 </body>
                 </html>

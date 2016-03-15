@@ -6,7 +6,7 @@
 <center> 
     <h1>File Edit Properties:</h1><br/>
 
-    <table style="width:30%">
+    <table style="width:100%">
         <tr>
             <td>
 
@@ -22,8 +22,13 @@
                     </label><br/>
 
                     <label for="description">Description:<br/>
-                        <textarea rows="10" cols="45" name="description"><?php echo $Args->description; ?></textarea>
-                        <label class="E"></label>
+
+                        <form method="post" action="somepage">
+                            <textarea rows="10" cols="45" name="description"><?php echo $Args->description; ?></textarea>
+                        </form>
+
+<!--                        <textarea rows="10" cols="45" name="description">--><?php //echo $Args->description; ?><!--</textarea>-->
+<!--                        <label class="E"></label>-->
                     </label><br/>      
                     
                     <button type="button" class="edit-file-button">Edit</button>
